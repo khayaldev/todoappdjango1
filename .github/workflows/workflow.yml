@@ -15,7 +15,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:10.8
+        image: postgres:14.2
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -44,10 +44,8 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
-          DB_ENGINE: ${{secrets.DB_ENGINE}}
 
         run: |
-          python manage.py collectstatic --no-input
           coverage run manage.py test && coverage report --fail-under=75 && coverage xml
       - name: Report coverage to codecov
         env:
@@ -57,7 +55,6 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_PORT: ${{ secrets.DB_PORT }}
-          DB_ENGINE: ${{secrets.DB_ENGINE}}
 
         uses: codecov/codecov-action@v1
         with:
