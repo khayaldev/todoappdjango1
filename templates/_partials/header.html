@@ -1,0 +1,34 @@
+{% load static %}
+<div class="ui menu">
+  <div class="ui container">
+    <a href="{% url 'home' %}" class="header item">
+      <img src={% static 'img/logo.png' %} alt="" class="logo">
+    </a>
+    <div class="right item">
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'create' %}" class="ui  olive button"> Create Todo </a>
+      <div class="ui simple dropdown item">
+        {{request.user.username}}
+         <i class="dropdown icon"></i>
+        <div class="menu">
+          <form action={% url 'logout' %} class="ui large form" method="post">
+            {% csrf_token %}
+            <input class="ui  button" type="submit" value="Sign out" ></input>
+          </form>
+        </div>
+      </div>
+
+      {% else %}
+      <div class="ui item">
+        <a href="{% url 'login' %}" class="ui olive button">Login</a>
+      </div>
+
+      
+      <div class="ui item">
+        <a href="{% url 'register' %}" class="ui olive button">Register</a>
+      </div>
+
+      {% endif %}
+    </div>
+  </div>
+</div>

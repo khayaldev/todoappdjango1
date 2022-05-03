@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>
+      {% block title %}
+      
+      {% endblock title %}
+
+      
+    </title>
+  </head>
+  <body>
+    <div>
+      {% include '_partials/header.html' %}
+      {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <div class="ui {{message.tags}} message container">
+            <div class="header">
+              {{message}}
+            </div>
+        </div>
+        {% endfor %}
+      </ul>
+        {% endif %}
+
+      <div class="ui container">
+        {% block content %} {% endblock content %}</div>
+    </div>
+    <script src= {% static 'js/app.js' %}  ></script>
+  </body>
+</html>
+
+

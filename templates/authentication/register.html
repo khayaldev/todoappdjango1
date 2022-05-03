@@ -1,0 +1,62 @@
+{% extends '_partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <div class="four wide column"></div>
+  <div class="eight wide column">
+    <div class="ui middle aligned center aligned grid">
+      <div class="column mt-5">
+        <h2 class="ui olive image header">
+          <img src={% static 'img/Logo.png' %} class="image" />
+          <div class="content">Registration</div>
+        </h2>
+
+
+
+        <form class="ui large form" method="post" action={% url 'register' %}>
+          {% csrf_token %}
+          <div class="ui pilled segment">
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="username" value="{{data.username}}"  placeholder="khayalfarajov" />
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="email" value="{{data.email}}" placeholder="khayalfarajov@todo.com" />
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input type="password" name="password" placeholder="Password" />
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input
+                  type="password"
+                  name="password2"
+                  placeholder="Repeat Password"
+                />
+              </div>
+            </div>
+            <button class="ui fluid large olive submit button">Submit</button>
+          </div>
+
+        </form>
+
+        <div class="ui message">Have an account? <a href={% url 'login'  %}>Login</a></div>
+    <div class="four wide column"></div>
+  </div>
+</div>
+{% endblock content %}
+
+
+

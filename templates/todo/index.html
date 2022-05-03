@@ -1,0 +1,67 @@
+{% extends '_partials/base.html' %}
+{% block title %}
+   Home
+{% endblock title %}
+{% load static %}
+{% block content %}
+
+{% if todo %}
+<h2 class="ui header">List of Todos</h2>
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for mytodo in todo  %}
+    <tr>
+
+      <td>{{mytodo.title}}</td>
+      <td>{{mytodo.description | slice:100}}</td>
+      <td>
+      {% if mytodo.is_completed %}
+        <p class='ui'> Done ✅</p>
+      {% else %}
+      <p class="ui">Not completed ❌</p>
+      {% endif %}
+      </td>
+      <td>
+
+        <a href={% url 'todo' mytodo.pk %} class="ui button">
+          <i class="ellipsis horizontal icon"></i>
+        </a>
+        <a href={% url 'update' mytodo.pk %} class="ui button">
+          <i class="edit  icon"></i>
+        </a>
+      </td>
+     
+    </tr>
+
+      {% endfor %}
+
+  </tbody>
+  <tfoot >
+    <tr>
+      <th><a href="?filter=all">🟡 All({{all}})</a></th>
+      <th ><a href="?filter=uncomplete">🔴 Uncompleted ({{uncompleted}})</a></th>
+      <th><a href="?filter=completed">🟢 Completed ({{completed}})</a></th>
+    </tr>
+  </tfoot>
+</table>
+{% else %}
+<div class="ui message">
+  <div class="header">
+    No items added.
+  </div>
+  <p>You can create first todo :  <a href="{% url "create" %}"> Add Todo</a></p>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+
+

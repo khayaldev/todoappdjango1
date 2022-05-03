@@ -1,0 +1,35 @@
+{% extends '_partials/base.html' %} {% load static %}
+{% block title %}
+  Details
+{% endblock title %}
+
+{% block content %}
+
+<h1 class='ui header'>Detail Todo</h1>
+
+<div class="ui  raised very padded text  pilled segment ">
+  <div class="content">
+    <div class="ui header">{{todo.title}} </div>
+    <div  style="font-weight:bold"class="meta"> 🕛{{todo.created_at|date:'D, F d  Y, H:i A'}}</div>
+    <br>
+    <div class="description">
+      <p>{{todo.description}}</p>
+    </div>
+  </div>
+  <br>
+  <div class="extra content">
+    {% if todo.is_completed %}
+    <p style="font-weight:bold">
+  
+        ✅Completed at {{todo.updated_at|date:'D, F d  Y, H:i A'}}
+    </p>
+    {% else %}
+    <p style="font-weight:bold">⛔Not yet completed</p>
+
+    {% endif %}
+      <a href={% url 'update' todo.id %} class="ui button olive">Edit</a>
+      <a href={% url 'delete' todo.id %} class="ui button red">Delete</a>
+  </div>
+</div>
+
+{% endblock content %}

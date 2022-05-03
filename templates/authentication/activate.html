@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+
+Hi {{user.username}}, Please use link below to verify your account. 
+
+http://{{domain}}{% url 'activate' uidb64=uid token=token %} 
+
+
+Sincerely, Khayal Farajov 🧑‍💻
+
+{% endautoescape %}
