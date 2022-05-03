@@ -1,5 +1,5 @@
 ## Tech Stack
-Python, Django, Html, Css (a little bit to customize admin), javascript(a little bit to settimeout for a django messages)
+Python, Django, Html, Css (a little bit to customize admin), javascript(a little bit to settimeout for a django messages), Unit testing, Github Actions (to automate testing and pull request to deploy)
 
 
 
