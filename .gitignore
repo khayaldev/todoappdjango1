@@ -1,3 +1,5 @@
 env
 htmlcov
 .env
+
+db.sqlite3
