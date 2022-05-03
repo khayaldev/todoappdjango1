@@ -1,0 +1,1 @@
+[![Python application](https://github.com/khayaltech/todoappdjango1/actions/workflows/workflow.yml/badge.svg)](https://github.com/khayaltech/todoappdjango1/actions/workflows/workflow.yml) [![codecov](https://codecov.io/gh/khayaltech/todoappdjango1/branch/master/graph/badge.svg?token=85PFG42DHO)](https://codecov.io/gh/khayaltech/todoappdjango1)
